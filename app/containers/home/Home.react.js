@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { authFail } from '../../actions/session/SessionActions';
 import { Link } from 'react-router-dom';
+import Nav from '../../components/layout/Nav.react';
+import Content from '../../components/layout/Content.react';
 /* class */
 class HomeContainer extends React.Component {
   componentWillMount() {
@@ -11,9 +13,11 @@ class HomeContainer extends React.Component {
 
   render() {
     return (<div>
-      <Link to="/test">Hola</Link>
-      <button onClick={this.props.logout}>Logout Here!</button>
-    </div>)
+        <Nav />
+        <Content />
+      </div>
+    );
   }
 }
-export default connect(null, {logout: authFail})(HomeContainer);
+//export default connect(null, {logout: authFail})(HomeContainer);
+export default HomeContainer;
