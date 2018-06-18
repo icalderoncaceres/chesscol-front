@@ -1,9 +1,19 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {createGame} from '../../actions/games/GameActions.js';
 //import {Route, Link, Redirect} from 'react-router-dom';
 class Nav extends React.Component{
+	static propTypes={
+		createGame: PropTypes.func
+	}    
     constructor(){
         super();
+    }
+
+    _createGame(){
+        this.props.createGame();
     }
 
     render(){
@@ -50,7 +60,7 @@ class Nav extends React.Component{
                 <div className="navbar-item">
                     <div className="field is-grouped">
                         <p className="control">
-                            <a className="button is-info" href="https://github.com/jgthms/bulma/releases/download/0.7.1/bulma-0.7.1.zip">
+                            <a className="button is-info" onClick={this._createGame.bind(this)}>
                                 <span className="icon">
                                 <i className="fas fa-chess"></i>
                                 </span>
@@ -94,4 +104,20 @@ class Nav extends React.Component{
     }
 }
 
-export default Nav;
+
+/* maps to pospr 
+const mapStop = (state, ownProps) => {
+    return {
+    		datosC: state.main.campaign.datos,
+    		campaignsFilterText: state.main.campaign.campaignsFilterText,
+    };
+}
+*/
+
+const mapActionsToProp = (state) => {      
+      return {
+      			createGame:createGame
+      		 };
+ }
+
+export default connect(null,mapActionsToProp())(Nav);
