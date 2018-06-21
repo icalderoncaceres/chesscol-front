@@ -1,4 +1,4 @@
-
+import { push } from 'react-router-redux'
 /* use ACtions  */
 //import ChatApi from '../../api/ChatApi';
 //import { LOAD_CHAT_SUCCESS } from '../../constants/ActionTypes';
@@ -18,7 +18,7 @@
 export const createGame = () => {
 
   return (dispatch) =>{
-      alert("Creamos un juego");
+      dispatch(push('/game'));
       /*
     return chatApi.fetchAllChats((getChats, err)=>{
       if(!err){
